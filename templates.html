@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Choose Template — Portfolio</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <style>
+
+        .templates-page {
+            max-width: 1180px;
+            margin: auto;
+            padding: 70px 24px 100px;
+        }
+
+        .templates-header {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 55px;
+        }
+
+        .templates-header .section-label {
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .templates-header h1 {
+            font-family: "Playfair Display", serif;
+            font-size: 55px;
+            line-height: 1.05;
+            margin-bottom: 15px;
+        }
+
+        .templates-header h1 span {
+            color: var(--orange);
+        }
+
+        .templates-header p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .template-choice-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .choice-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: 0.25s ease;
+        }
+
+        .choice-card:hover {
+            transform: translateY(-7px);
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.09);
+        }
+
+        .choice-preview {
+            height: 360px;
+            padding: 25px;
+        }
+
+        .choice-info {
+            padding: 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        .choice-info-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .choice-number {
+            font-size: 11px;
+            color: #aaa;
+        }
+
+        .choice-info h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 25px;
+        }
+
+        .choice-info p {
+            color: #888;
+            font-size: 12px;
+            margin-bottom: 18px;
+        }
+
+        .choose-button {
+            width: 100%;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            background: var(--dark);
+            color: white;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: 0.2s ease;
+        }
+
+        .choose-button:hover {
+            background: #333;
+        }
+
+        /* SIMPLE */
+
+        .simple-preview {
+            background: #f0eee9;
+            height: 100%;
+            padding: 30px;
+            border-radius: 10px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .simple-avatar {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            background: #d8d5cd;
+            margin-bottom: 15px;
+        }
+
+        .simple-name {
+            width: 150px;
+            height: 14px;
+            background: #252525;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+
+        .simple-role {
+            width: 100px;
+            height: 6px;
+            background: #aaa;
+            border-radius: 4px;
+            margin-bottom: 30px;
+        }
+
+        .simple-section {
+            width: 100%;
+            height: 55px;
+            background: white;
+            border-radius: 7px;
+            margin-bottom: 10px;
+        }
+
+        .simple-section.large {
+            height: 80px;
+        }
+
+        /* MODERN */
+
+        .modern-preview {
+            height: 100%;
+            background: #1f2421;
+            border-radius: 10px;
+
+            display: grid;
+            grid-template-columns: 85px 1fr;
+
+            overflow: hidden;
+        }
+
+        .modern-preview-sidebar {
+            background: #151917;
+            padding: 25px 15px;
+        }
+
+        .modern-preview-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #d68e6c;
+            margin: 0 auto 35px;
+        }
+
+        .modern-nav-line {
+            height: 5px;
+            background: #454b47;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .modern-preview-main {
+            background: #f8f7f3;
+            padding: 30px;
+        }
+
+        .modern-small {
+            width: 65px;
+            height: 6px;
+            background: #777;
+            border-radius: 5px;
+            margin-bottom: 12px;
+        }
+
+        .modern-big {
+            width: 170px;
+            height: 18px;
+            background: #222;
+            border-radius: 5px;
+            margin-bottom: 25px;
+        }
+
+        .modern-card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .modern-card-box {
+            height: 75px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .modern-card-box.wide {
+            grid-column: span 2;
+        }
+
+        /* CREATIVE */
+
+        .creative-preview {
+            height: 100%;
+            background: #eee8f4;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .creative-circle-one {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: #cbb6df;
+            top: -70px;
+            right: -60px;
+        }
+
+        .creative-circle-two {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #e5a685;
+            bottom: -40px;
+            left: -30px;
+        }
+
+        .creative-preview-content {
+            position: relative;
+            padding: 40px;
+        }
+
+        .creative-label {
+            width: 60px;
+            height: 6px;
+            background: #7567a8;
+            border-radius: 5px;
+            margin-bottom: 12px;
+        }
+
+        .creative-name {
+            width: 170px;
+            height: 22px;
+            background: #31293b;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .creative-role {
+            width: 110px;
+            height: 7px;
+            background: #9b83ae;
+            border-radius: 5px;
+            margin-bottom: 35px;
+        }
+
+        .creative-box {
+            width: 100%;
+            height: 90px;
+            background: rgba(255,255,255,0.85);
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,.06);
+        }
+
+        .template-note {
+            text-align: center;
+            color: #999;
+            font-size: 11px;
+            margin-top: 35px;
+        }
+
+        @media (max-width: 850px) {
+
+            .template-choice-grid {
+                grid-template-columns: 1fr;
+                max-width: 550px;
+                margin: auto;
+            }
+
+            .templates-header h1 {
+                font-size: 43px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="navbar">
+
+    <div class="nav-container">
+
+        <a
+            href="index.html"
+            class="logo"
+        >
+
+            <span class="logo-mark">
+                P
+            </span>
+
+            <span>
+                Portfolio
+            </span>
+
+        </a>
+
+
+        <nav class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="create.html">
+                Create
+            </a>
+
+            <a
+                href="templates.html"
+                class="active"
+            >
+                Templates
+            </a>
+
+            <a href="manage.html">
+                My Portfolios
+            </a>
+
+        </nav>
+
+
+        <a
+            href="create.html"
+            class="nav-button"
+        >
+            Edit Information
+        </a>
+
+    </div>
+
+</header>
+
+
+<main class="templates-page">
+
+
+    <div class="templates-header">
+
+        <span class="section-label">
+            CHOOSE YOUR DESIGN
+        </span>
+
+        <h1>
+            Pick your <span>style.</span>
+        </h1>
+
+        <p>
+            Your information stays the same.
+            Choose the design that best represents you.
+        </p>
+
+    </div>
+
+
+    <div class="template-choice-grid">
+
+
+        <!-- SIMPLE -->
+
+        <article class="choice-card">
+
+            <div class="choice-preview">
+
+                <div class="simple-preview">
+
+                    <div class="simple-avatar"></div>
+
+                    <div class="simple-name"></div>
+
+                    <div class="simple-role"></div>
+
+                    <div class="simple-section large"></div>
+
+                    <div class="simple-section"></div>
+
+                    <div class="simple-section"></div>
+
+                </div>
+
+            </div>
+
+
+            <div class="choice-info">
+
+                <div class="choice-info-top">
+
+                    <h2>
+                        Simple
+                    </h2>
+
+                    <span class="choice-number">
+                        01
+                    </span>
+
+                </div>
+
+                <p>
+                    Clean, minimal, and professional.
+                </p>
+
+                <button
+                    class="choose-button"
+                    onclick="selectTemplate('simple')"
+                >
+                    Use Simple Template →
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- MODERN -->
+
+        <article class="choice-card">
+
+            <div class="choice-preview">
+
+                <div class="modern-preview">
+
+                    <div class="modern-preview-sidebar">
+
+                        <div class="modern-preview-avatar"></div>
+
+                        <div class="modern-nav-line"></div>
+
+                        <div class="modern-nav-line"></div>
+
+                        <div class="modern-nav-line"></div>
+
+                    </div>
+
+
+                    <div class="modern-preview-main">
+
+                        <div class="modern-small"></div>
+
+                        <div class="modern-big"></div>
+
+                        <div class="modern-card-grid">
+
+                            <div class="modern-card-box"></div>
+
+                            <div class="modern-card-box"></div>
+
+                            <div class="modern-card-box wide"></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="choice-info">
+
+                <div class="choice-info-top">
+
+                    <h2>
+                        Modern
+                    </h2>
+
+                    <span class="choice-number">
+                        02
+                    </span>
+
+                </div>
+
+                <p>
+                    Bold cards, sections, and visual structure.
+                </p>
+
+                <button
+                    class="choose-button"
+                    onclick="selectTemplate('modern')"
+                >
+                    Use Modern Template →
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- CREATIVE -->
+
+        <article class="choice-card">
+
+            <div class="choice-preview">
+
+                <div class="creative-preview">
+
+                    <div class="creative-circle-one"></div>
+
+                    <div class="creative-circle-two"></div>
+
+
+                    <div class="creative-preview-content">
+
+                        <div class="creative-label"></div>
+
+                        <div class="creative-name"></div>
+
+                        <div class="creative-role"></div>
+
+                        <div class="creative-box"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="choice-info">
+
+                <div class="choice-info-top">
+
+                    <h2>
+                        Creative
+                    </h2>
+
+                    <span class="choice-number">
+                        03
+                    </span>
+
+                </div>
+
+                <p>
+                    Expressive, artistic, and distinctive.
+                </p>
+
+                <button
+                    class="choose-button"
+                    onclick="selectTemplate('creative')"
+                >
+                    Use Creative Template →
+                </button>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+
+    <p class="template-note">
+        You can change your template anytime before finalizing your portfolio.
+    </p>
+
+
+</main>
+
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="logo">
+
+            <span class="logo-mark">
+                P
+            </span>
+
+            <span>
+                Portfolio
+            </span>
+
+        </div>
+
+        <p>
+            Online Portfolio Template Generator
+        </p>
+
+        <p class="footer-copy">
+            © 2026 Portfolio. WST × HCI × IM
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+    function selectTemplate(template) {
+
+        const portfolio =
+            JSON.parse(
+                localStorage.getItem("currentPortfolio")
+            );
+
+        if (!portfolio) {
+
+            alert(
+                "Please complete your portfolio information first."
+            );
+
+            window.location.href =
+                "create.html";
+
+            return;
+        }
+
+
+        portfolio.selectedTemplate =
+            template;
+
+
+        localStorage.setItem(
+            "currentPortfolio",
+            JSON.stringify(portfolio)
+        );
+
+
+        window.location.href =
+            "preview.html";
+
+    }
+
+</script>
+
+
+</body>
+
+</html>

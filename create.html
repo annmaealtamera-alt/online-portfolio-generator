@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Portfolio — Portfolio</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* CREATE PAGE */
+
+        .form-page {
+            max-width: 1000px;
+            margin: auto;
+            padding: 70px 24px 100px;
+        }
+
+        .form-header {
+            margin-bottom: 45px;
+        }
+
+        .form-header .section-label {
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .form-header h1 {
+            font-family: "Playfair Display", serif;
+            font-size: 52px;
+            line-height: 1.1;
+            margin-bottom: 14px;
+        }
+
+        .form-header h1 span {
+            color: var(--orange);
+        }
+
+        .form-header p {
+            color: var(--gray);
+            max-width: 650px;
+        }
+
+        .portfolio-form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .form-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+        }
+
+        .form-card-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 28px;
+        }
+
+        .form-number {
+            width: 38px;
+            height: 38px;
+            background: var(--dark);
+            color: white;
+            border-radius: 9px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 12px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .form-card-header h2 {
+            font-size: 19px;
+            margin-bottom: 3px;
+        }
+
+        .form-card-header p {
+            color: #888;
+            font-size: 12px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #444;
+        }
+
+        .form-group label span {
+            color: #e87945;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            border: 1px solid #ddd9d1;
+            background: #faf9f6;
+            border-radius: 8px;
+
+            padding: 13px 14px;
+
+            font-size: 13px;
+            color: var(--dark);
+
+            outline: none;
+
+            transition: 0.2s ease;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--orange);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(232, 121, 69, 0.08);
+        }
+
+        .form-help {
+            color: #999;
+            font-size: 11px;
+        }
+
+        /* Profile picture */
+
+        .profile-upload {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 18px;
+            border: 1px dashed #ccc7bd;
+            border-radius: 10px;
+            background: #faf9f6;
+        }
+
+        .profile-placeholder {
+            width: 75px;
+            height: 75px;
+            background: #e8e5dd;
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 25px;
+            color: #999;
+
+            flex-shrink: 0;
+        }
+
+        .profile-upload-content {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .file-input {
+            font-size: 12px;
+        }
+
+        /* Dynamic sections */
+
+        .dynamic-item {
+            border: 1px solid #e2dfd8;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            background: #faf9f6;
+        }
+
+        .dynamic-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .dynamic-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        .dynamic-top strong {
+            font-size: 13px;
+        }
+
+        .remove-item {
+            border: none;
+            background: transparent;
+            color: #c05d45;
+            font-size: 11px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .add-item {
+            border: 1px dashed #c9c5bd;
+            background: transparent;
+            padding: 11px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+
+            color: #666;
+            font-size: 12px;
+            font-weight: 600;
+
+            margin-top: 15px;
+        }
+
+        .add-item:hover {
+            background: #f5f3ee;
+        }
+
+        /* Bottom action */
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding-top: 10px;
+        }
+
+        .form-actions-note {
+            color: #999;
+            font-size: 11px;
+        }
+
+        .form-actions-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .cancel-button {
+            padding: 13px 20px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .save-button {
+            padding: 13px 22px;
+            border: none;
+            border-radius: 8px;
+
+            background: var(--dark);
+            color: white;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .save-button:hover {
+            background: #333;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 700px) {
+
+            .form-page {
+                padding: 45px 18px 70px;
+            }
+
+            .form-header h1 {
+                font-size: 40px;
+            }
+
+            .form-card {
+                padding: 22px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .form-actions {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 15px;
+            }
+
+            .form-actions-buttons {
+                width: 100%;
+            }
+
+            .form-actions-buttons button {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+                <span class="logo-mark">P</span>
+                <span>Portfolio</span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="create.html" class="active">Create</a>
+                <a href="manage.html">My Portfolios</a>
+            </nav>
+
+            <a href="templates.html" class="nav-button">
+                Templates
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN FORM -->
+
+    <main class="form-page">
+
+        <div class="form-header">
+
+            <span class="section-label">
+                CREATE YOUR PORTFOLIO
+            </span>
+
+            <h1>
+                Tell us about <span>yourself.</span>
+            </h1>
+
+            <p>
+                Fill in your information below. You can edit your
+                portfolio later before choosing your final design.
+            </p>
+
+        </div>
+
+
+        <form class="portfolio-form" id="portfolioForm">
+
+
+            <!-- PERSONAL INFORMATION -->
+
+            <section class="form-card">
+
+                <div class="form-card-header">
+
+                    <div class="form-number">
+                        01
+                    </div>
+
+                    <div>
+                        <h2>Personal Information</h2>
+
+                        <p>
+                            Basic information that will appear on your portfolio.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group full">
+
+                        <label>
+                            Profile Picture
+                        </label>
+
+                        <div class="profile-upload">
+
+                            <div class="profile-placeholder">
+                                👤
+                            </div>
+
+                            <div class="profile-upload-content">
+
+                                <strong style="font-size: 13px;">
+                                    Upload your photo
+                                </strong>
+
+                                <input
+                                    type="file"
+                                    id="profilePicture"
+                                    class="file-input"
+                                    accept="image/*"
+                                >
+
+                                <small class="form-help">
+                                    JPG, PNG, or WebP recommended.
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Full Name <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="fullName"
+                            placeholder="e.g. Juan Dela Cruz"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Email <span>*</span>
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="e.g. juan@email.com"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Contact Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="contactNumber"
+                            placeholder="+63 9XX XXX XXXX"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Address
+                        </label>
+
+                        <input
+                            type="text"
+                            id="address"
+                            placeholder="City, Province"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label>
+                            About Me <span>*</span>
+                        </label>
+
+                        <textarea
+                            id="aboutMe"
+                            placeholder="Write a short introduction about yourself..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- EDUCATION -->
+
+            <section class="form-card">
+
+                <div class="form-card-header">
+
+                    <div class="form-number">
+                        02
+                    </div>
+
+                    <div>
+                        <h2>Educational Background</h2>
+
+                        <p>
+                            Add your educational background.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div id="educationContainer">
+
+                    <div class="dynamic-item education-item">
+
+                        <div class="dynamic-top">
+
+                            <strong>
+                                Education 1
+                            </strong>
+
+                            <button
+                                type="button"
+                                class="remove-item"
+                                onclick="removeItem(this)"
+                            >
+                                Remove
+                            </button>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label>
+                                    School / Institution
+                                </label>
+
+                                <input
+                                    type="text"
+                                    class="education-school"
+                                    placeholder="e.g. University Name"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Degree / Program
+                                </label>
+
+                                <input
+                                    type="text"
+                                    class="education-degree"
+                                    placeholder="e.g. BS Information Technology"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Year
+                                </label>
+
+                                <input
+                                    type="text"
+                                    class="education-year"
+                                    placeholder="e.g. 2023 - 2027"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Description
+                                </label>
+
+                                <input
+                                    type="text"
+                                    class="education-description"
+                                    placeholder="Optional"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="add-item"
+                    onclick="addEducation()"
+                >
+                    + Add Education
+                </button>
+
+            </section>
+
+
+            <!-- SKILLS -->
+
+            <section class="form-card">
+
+                <div class="form-card-header">
+
+                    <div class="form-number">
+                        03
+                    </div>
+
+                    <div>
+                        <h2>Skills</h2>
+
+                        <p>
+                            Add your technical or personal skills.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Skills
+                    </label>
+
+                    <input
+                        type="text"
+                        id="skills"
+                        placeholder="e.g. HTML, CSS, JavaScript, UI Design"
+                    >
+
+                    <small class="form-help">
+                        Separate multiple skills with commas.
+                    </small>
+
+                </div>
+
+            </section>
+
+
+            <!-- PROJECTS -->
+
+            <section class="form-card">
+
+                <div class="form-card-header">
+
+                    <div class="form-number">
+                        04
+                    </div>
+
+                    <div>
+                        <h2>Projects</h2>
+
+                        <p>
+                            Showcase projects you have worked on.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div id="projectsContainer">
+
+                    <div class="dynamic-item project-item">
+
+                        <div class="dynamic-top">
+
+                            <strong>
+                                Project 1
+                            </strong>
+
+                            <button
+                                type="button"
+                                class="remove-item"
+                                onclick="removeItem(this)"
+                            >
+                                Remove
+                            </button>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label>
+                                    Project Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    class="project-name"
+                                    placeholder="e.g. Student Portal"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Project Link
+                                </label>
+
+                                <input
+                                    type="url"
+                                    class="project-link"
+                                    placeholder="https://..."
+                                >
+
+                            </div>
+
+
+                            <div class="form-group full">
+
+                                <label>
+                                    Description
+                                </label>
+
+                                <textarea
+                                    class="project-description"
+                                    placeholder="Describe your project..."
+                                ></textarea>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="add-item"
+                    onclick="addProject()"
+                >
+                    + Add Project
+                </button>
+
+            </section>
+
+
+            <!-- WORK EXPERIENCE -->
+
+            <section class="form-card">
+
+                <div class="form-card-header">
+
+                    <div class="form-number">
+                        05
+                    </div>
+
+                    <div>
+                        <h2>Work Experience</h2>
+
+                        <p>
+                            Add your work, internship, or volunteer experience.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div id="experienceContainer">
+
+                    <div class="dynamic-item experience-item">
+
+                        <div class="dynamic-top">
+
+                            <strong>
+                                Experience 1
+                            </strong>
+
+                            <button
+                                type="button"
+                                class="remove-item"
+                                onclick="removeItem(this)"
+                            >
+                                Remove
+                            </button>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label>
+                                    Position / Role
+                                </label>
+
+                                <input
+                                    type="text"
+                                    class="experience-position"
+                                    placeholder="e.g. Web Developer Intern"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Company
+                                </label>
+
+                                <input
+                                    type="text"
+                                    class="experience-company"
+                                    placeholder="Company Name"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Duration
+                                </label>
+
+                                <input
+                                    type="text"
+                                    class="experience-duration"
+                                    placeholder="e.g. June 2025 - August 2025"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group full">
+
+                                <label>
+                                    Description
+                                </label>
+
+                                <textarea
+                                    class="experience-description"
+                                    placeholder="Describe your responsibilities..."
+                                ></textarea>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="add-item"
+                    onclick="addExperience()"
+                >
+                    + Add Experience
+                </button>
+
+            </section>
+
+
+            <!-- SOCIAL LINKS -->
+
+            <section class="form-card">
+
+                <div class="form-card-header">
+
+                    <div class="form-number">
+                        06
+                    </div>
+
+                    <div>
+                        <h2>Social Media & Website Links</h2>
+
+                        <p>
+                            Add links where people can find you online.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            GitHub
+                        </label>
+
+                        <input
+                            type="url"
+                            id="github"
+                            placeholder="https://github.com/username"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            LinkedIn
+                        </label>
+
+                        <input
+                            type="url"
+                            id="linkedin"
+                            placeholder="https://linkedin.com/in/username"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Facebook
+                        </label>
+
+                        <input
+                            type="url"
+                            id="facebook"
+                            placeholder="https://facebook.com/username"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Personal Website
+                        </label>
+
+                        <input
+                            type="url"
+                            id="website"
+                            placeholder="https://yourwebsite.com"
+                        >
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ACTIONS -->
+
+            <div class="form-actions">
+
+                <span class="form-actions-note">
+                    * Required fields
+                </span>
+
+                <div class="form-actions-buttons">
+
+                    <button
+                        type="button"
+                        class="cancel-button"
+                        onclick="window.location.href='index.html'"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="save-button"
+                    >
+                        Continue to Templates →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        /* -----------------------------------------
+           ADD EDUCATION
+        ----------------------------------------- */
+
+        function addEducation() {
+
+            const container =
+                document.getElementById("educationContainer");
+
+            const count =
+                container.querySelectorAll(".education-item").length + 1;
+
+            const item =
+                document.createElement("div");
+
+            item.className = "dynamic-item education-item";
+
+            item.innerHTML = `
+
+                <div class="dynamic-top">
+
+                    <strong>
+                        Education ${count}
+                    </strong>
+
+                    <button
+                        type="button"
+                        class="remove-item"
+                        onclick="removeItem(this)"
+                    >
+                        Remove
+                    </button>
+
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            School / Institution
+                        </label>
+
+                        <input
+                            type="text"
+                            class="education-school"
+                            placeholder="e.g. University Name"
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Degree / Program
+                        </label>
+
+                        <input
+                            type="text"
+                            class="education-degree"
+                            placeholder="e.g. BS Information Technology"
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Year
+                        </label>
+
+                        <input
+                            type="text"
+                            class="education-year"
+                            placeholder="e.g. 2023 - 2027"
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Description
+                        </label>
+
+                        <input
+                            type="text"
+                            class="education-description"
+                            placeholder="Optional"
+                        >
+
+                    </div>
+
+                </div>
+            `;
+
+            container.appendChild(item);
+        }
+
+
+        /* -----------------------------------------
+           ADD PROJECT
+        ----------------------------------------- */
+
+        function addProject() {
+
+            const container =
+                document.getElementById("projectsContainer");
+
+            const count =
+                container.querySelectorAll(".project-item").length + 1;
+
+            const item =
+                document.createElement("div");
+
+            item.className = "dynamic-item project-item";
+
+            item.innerHTML = `
+
+                <div class="dynamic-top">
+
+                    <strong>
+                        Project ${count}
+                    </strong>
+
+                    <button
+                        type="button"
+                        class="remove-item"
+                        onclick="removeItem(this)"
+                    >
+                        Remove
+                    </button>
+
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Project Name
+                        </label>
+
+                        <input
+                            type="text"
+                            class="project-name"
+                            placeholder="e.g. Student Portal"
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Project Link
+                        </label>
+
+                        <input
+                            type="url"
+                            class="project-link"
+                            placeholder="https://..."
+                        >
+
+                    </div>
+
+                    <div class="form-group full">
+
+                        <label>
+                            Description
+                        </label>
+
+                        <textarea
+                            class="project-description"
+                            placeholder="Describe your project..."
+                        ></textarea>
+
+                    </div>
+
+                </div>
+            `;
+
+            container.appendChild(item);
+        }
+
+
+        /* -----------------------------------------
+           ADD EXPERIENCE
+        ----------------------------------------- */
+
+        function addExperience() {
+
+            const container =
+                document.getElementById("experienceContainer");
+
+            const count =
+                container.querySelectorAll(".experience-item").length + 1;
+
+            const item =
+                document.createElement("div");
+
+            item.className = "dynamic-item experience-item";
+
+            item.innerHTML = `
+
+                <div class="dynamic-top">
+
+                    <strong>
+                        Experience ${count}
+                    </strong>
+
+                    <button
+                        type="button"
+                        class="remove-item"
+                        onclick="removeItem(this)"
+                    >
+                        Remove
+                    </button>
+
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>
+                            Position / Role
+                        </label>
+
+                        <input
+                            type="text"
+                            class="experience-position"
+                            placeholder="e.g. Web Developer Intern"
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Company
+                        </label>
+
+                        <input
+                            type="text"
+                            class="experience-company"
+                            placeholder="Company Name"
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Duration
+                        </label>
+
+                        <input
+                            type="text"
+                            class="experience-duration"
+                            placeholder="e.g. June 2025 - August 2025"
+                        >
+
+                    </div>
+
+                    <div class="form-group full">
+
+                        <label>
+                            Description
+                        </label>
+
+                        <textarea
+                            class="experience-description"
+                            placeholder="Describe your responsibilities..."
+                        ></textarea>
+
+                    </div>
+
+                </div>
+            `;
+
+            container.appendChild(item);
+        }
+
+
+        /* -----------------------------------------
+           REMOVE ITEM
+        ----------------------------------------- */
+
+        function removeItem(button) {
+
+            const item = button.closest(".dynamic-item");
+
+            const container = item.parentElement;
+
+            const items =
+                container.querySelectorAll(".dynamic-item");
+
+            if (items.length <= 1) {
+
+                alert("You need at least one entry.");
+
+                return;
+            }
+
+            item.remove();
+        }
+  
+        
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+<script src="js/create.js"></script>
+
+</body>
+</html>

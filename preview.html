@@ -1,0 +1,2170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Portfolio Preview — Portfolio</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <style>
+
+        body {
+            background: #eceae5;
+        }
+
+        .preview-page {
+            padding: 45px 20px 80px;
+        }
+
+        .preview-toolbar {
+            max-width: 1100px;
+            margin: 0 auto 25px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 15px;
+        }
+
+        .preview-toolbar h1 {
+            font-size: 18px;
+        }
+
+        .preview-toolbar p {
+            color: #888;
+            font-size: 11px;
+        }
+
+        .toolbar-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .toolbar-button {
+            border: 1px solid #d8d4cc;
+            background: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .toolbar-button.primary {
+            background: #171717;
+            color: white;
+            border-color: #171717;
+        }
+
+        .portfolio-output {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+
+        /* =========================================
+           SHARED PORTFOLIO STYLES
+        ========================================= */
+
+        .portfolio-output * {
+            box-sizing: border-box;
+        }
+
+        .portfolio-output a {
+            text-decoration: none;
+        }
+
+        .portfolio-name {
+            font-family: "Playfair Display", serif;
+        }
+
+
+        /* =========================================
+           SIMPLE TEMPLATE
+        ========================================= */
+
+        .portfolio-simple {
+            background: #fff;
+            min-height: 900px;
+
+            padding: 65px 75px;
+
+            color: #202020;
+        }
+
+        .simple-header {
+            text-align: center;
+
+            padding-bottom: 45px;
+
+            border-bottom: 1px solid #e4e1da;
+        }
+
+        .simple-profile {
+            width: 105px;
+            height: 105px;
+
+            border-radius: 50%;
+
+            background: #dedbd3;
+
+            margin: 0 auto 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #888;
+            font-size: 32px;
+            font-weight: 700;
+
+            overflow: hidden;
+        }
+
+        .simple-profile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .simple-header h1 {
+            font-family: "Playfair Display", serif;
+            font-size: 46px;
+
+            margin-bottom: 7px;
+        }
+
+        .simple-header .simple-contact {
+            color: #777;
+            font-size: 12px;
+        }
+
+        .simple-about {
+            max-width: 700px;
+            margin: 45px auto;
+
+            text-align: center;
+        }
+
+        .simple-about h2,
+        .simple-section h2 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+
+            margin-bottom: 13px;
+        }
+
+        .simple-about p {
+            color: #666;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .simple-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            gap: 50px;
+
+            margin-top: 45px;
+        }
+
+        .simple-section {
+            margin-bottom: 35px;
+        }
+
+        .simple-section p,
+        .simple-section li {
+            color: #666;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .simple-section ul {
+            padding-left: 18px;
+        }
+
+        .simple-item {
+            margin-bottom: 17px;
+        }
+
+        .simple-item strong {
+            display: block;
+            font-size: 13px;
+            color: #252525;
+        }
+
+        .simple-item span {
+            color: #999;
+            font-size: 11px;
+        }
+
+        .simple-socials {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+
+            margin-top: 40px;
+            padding-top: 25px;
+
+            border-top: 1px solid #e4e1da;
+        }
+
+        .simple-socials a {
+            color: #666;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+
+        /* =========================================
+           MODERN TEMPLATE
+        ========================================= */
+
+        .portfolio-modern {
+            background: #f6f5f1;
+
+            min-height: 900px;
+
+            display: grid;
+
+            grid-template-columns: 270px 1fr;
+
+            color: #202321;
+        }
+
+        .modern-sidebar {
+            background: #1e2421;
+            color: white;
+
+            padding: 50px 30px;
+        }
+
+        .modern-profile {
+            width: 110px;
+            height: 110px;
+
+            border-radius: 50%;
+
+            background: #d99675;
+
+            margin: 0 auto 20px;
+
+            overflow: hidden;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        .modern-profile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modern-sidebar h1 {
+            text-align: center;
+
+            font-family: "Playfair Display", serif;
+
+            font-size: 26px;
+
+            margin-bottom: 5px;
+        }
+
+        .modern-sidebar .modern-role {
+            text-align: center;
+
+            color: #aeb5b0;
+
+            font-size: 11px;
+
+            margin-bottom: 45px;
+        }
+
+        .modern-side-section {
+            margin-bottom: 35px;
+        }
+
+        .modern-side-section h3 {
+            color: #d99675;
+
+            font-size: 9px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 12px;
+        }
+
+        .modern-side-section p,
+        .modern-side-section a {
+            color: #c5cac7;
+
+            font-size: 11px;
+
+            line-height: 1.8;
+
+            display: block;
+        }
+
+        .modern-main {
+            padding: 55px;
+        }
+
+        .modern-intro-label {
+            color: #d17851;
+
+            font-size: 10px;
+
+            letter-spacing: 2px;
+
+            font-weight: 700;
+
+            margin-bottom: 10px;
+        }
+
+        .modern-main h2 {
+            font-family: "Playfair Display", serif;
+
+            font-size: 40px;
+
+            margin-bottom: 14px;
+        }
+
+        .modern-about {
+            color: #777;
+
+            font-size: 13px;
+
+            line-height: 1.8;
+
+            max-width: 700px;
+
+            margin-bottom: 50px;
+        }
+
+        .modern-section {
+            margin-bottom: 45px;
+        }
+
+        .modern-section-title {
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 20px;
+        }
+
+        .modern-section-title span {
+            font-size: 13px;
+
+            font-weight: 700;
+        }
+
+        .modern-section-title::after {
+            content: "";
+
+            height: 1px;
+
+            background: #dedbd4;
+
+            flex: 1;
+        }
+
+        .modern-card-grid {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 15px;
+        }
+
+        .modern-card {
+            background: white;
+
+            border: 1px solid #e2dfd8;
+
+            border-radius: 10px;
+
+            padding: 20px;
+        }
+
+        .modern-card h4 {
+            font-size: 14px;
+
+            margin-bottom: 5px;
+        }
+
+        .modern-card small {
+            color: #d17851;
+
+            font-size: 10px;
+        }
+
+        .modern-card p {
+            color: #777;
+
+            font-size: 11px;
+
+            line-height: 1.6;
+
+            margin-top: 10px;
+        }
+
+        .modern-skills {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+        }
+
+        .modern-skill {
+            background: white;
+
+            border: 1px solid #ddd9d1;
+
+            border-radius: 50px;
+
+            padding: 7px 12px;
+
+            font-size: 10px;
+
+            color: #555;
+        }
+
+
+        /* =========================================
+           CREATIVE TEMPLATE
+        ========================================= */
+
+        .portfolio-creative {
+            background: #f0eaf5;
+
+            min-height: 900px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            color: #302938;
+
+            padding: 65px;
+        }
+
+        .creative-decoration-one {
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            background: #cbb4dc;
+
+            border-radius: 50%;
+
+            right: -100px;
+            top: -100px;
+        }
+
+        .creative-decoration-two {
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            background: #e6a583;
+
+            border-radius: 50%;
+
+            left: -80px;
+            bottom: -70px;
+        }
+
+        .creative-inner {
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 850px;
+
+            margin: auto;
+        }
+
+        .creative-hero {
+            min-height: 330px;
+
+            display: grid;
+
+            grid-template-columns: 1fr 220px;
+
+            align-items: center;
+
+            gap: 50px;
+        }
+
+        .creative-label {
+            color: #7567a8;
+
+            font-size: 11px;
+
+            letter-spacing: 3px;
+
+            font-weight: 700;
+
+            margin-bottom: 15px;
+        }
+
+        .creative-hero h1 {
+            font-family: "Playfair Display", serif;
+
+            font-size: 64px;
+
+            line-height: 1;
+
+            margin-bottom: 13px;
+        }
+
+        .creative-role {
+            font-size: 15px;
+
+            color: #806f91;
+
+            margin-bottom: 20px;
+        }
+
+        .creative-about {
+            color: #655b6d;
+
+            font-size: 12px;
+
+            line-height: 1.8;
+
+            max-width: 550px;
+        }
+
+        .creative-profile {
+            width: 210px;
+            height: 210px;
+
+            border-radius: 35% 65% 60% 40% / 40% 35% 65% 60%;
+
+            background: #e2cde9;
+
+            overflow: hidden;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 40px;
+
+            font-weight: 700;
+
+            box-shadow: 15px 15px 0 #d3b7df;
+        }
+
+        .creative-profile img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+        .creative-section {
+            background: rgba(255,255,255,.78);
+
+            border-radius: 18px;
+
+            padding: 28px;
+
+            margin-top: 22px;
+
+            box-shadow: 0 10px 30px rgba(70,50,80,.05);
+        }
+
+        .creative-section h2 {
+            font-family: "Playfair Display", serif;
+
+            font-size: 25px;
+
+            margin-bottom: 18px;
+        }
+
+        .creative-project-grid {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 15px;
+        }
+
+        .creative-project {
+            background: #f7f2fa;
+
+            border-radius: 12px;
+
+            padding: 20px;
+
+            border: 1px solid #e2d7e8;
+        }
+
+        .creative-project h3 {
+            font-size: 14px;
+
+            margin-bottom: 7px;
+        }
+
+        .creative-project p {
+            font-size: 11px;
+
+            color: #746a7a;
+
+            line-height: 1.7;
+        }
+
+        .creative-education-item {
+            border-left: 3px solid #9b83ae;
+
+            padding-left: 15px;
+
+            margin-bottom: 18px;
+        }
+
+        .creative-education-item strong {
+            display: block;
+
+            font-size: 13px;
+        }
+
+        .creative-education-item span {
+            color: #806f91;
+
+            font-size: 10px;
+        }
+
+        .creative-socials {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+        }
+
+        .creative-socials a {
+            background: #302938;
+
+            color: white;
+
+            border-radius: 50px;
+
+            padding: 8px 13px;
+
+            font-size: 10px;
+        }
+
+
+        /* =========================================
+           EMPTY STATE
+        ========================================= */
+
+        .empty-preview {
+            max-width: 550px;
+
+            margin: 100px auto;
+
+            text-align: center;
+
+            background: white;
+
+            padding: 50px;
+
+            border-radius: 16px;
+        }
+
+        .empty-preview h2 {
+            font-family: "Playfair Display", serif;
+
+            font-size: 30px;
+
+            margin-bottom: 10px;
+        }
+
+        .empty-preview p {
+            color: #777;
+
+            font-size: 13px;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 800px) {
+
+            .preview-toolbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .portfolio-simple {
+                padding: 40px 25px;
+            }
+
+            .simple-grid {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .portfolio-modern {
+                grid-template-columns: 1fr;
+            }
+
+            .modern-sidebar {
+                padding: 35px 25px;
+            }
+
+            .modern-main {
+                padding: 35px 25px;
+            }
+
+            .modern-card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .creative-hero {
+                grid-template-columns: 1fr;
+            }
+
+            .creative-profile {
+                width: 160px;
+                height: 160px;
+            }
+
+            .portfolio-creative {
+                padding: 35px 20px;
+            }
+
+            .creative-hero h1 {
+                font-size: 48px;
+            }
+
+            .creative-project-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="navbar">
+
+    <div class="nav-container">
+
+        <a
+            href="index.html"
+            class="logo"
+        >
+
+            <span class="logo-mark">
+                P
+            </span>
+
+            <span>
+                Portfolio
+            </span>
+
+        </a>
+
+
+        <nav class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="create.html">
+                Create
+            </a>
+
+            <a
+                href="templates.html"
+                class="active"
+            >
+                Preview
+            </a>
+
+            <a href="manage.html">
+                My Portfolios
+            </a>
+
+        </nav>
+
+
+        <a
+    href="#"
+    class="nav-button"
+    onclick="editPortfolio(); return false;"
+>
+    Edit Information
+</a>
+
+    </div>
+
+</header>
+
+
+<main class="preview-page">
+
+
+    <div class="preview-toolbar">
+
+        <div>
+
+            <h1>
+                Portfolio Preview
+            </h1>
+
+            <p>
+                Review your portfolio before saving it.
+            </p>
+
+        </div>
+
+
+        <div class="toolbar-buttons">
+
+            <button
+                class="toolbar-button"
+                onclick="editPortfolio()"
+            >
+                ← Edit Information
+            </button>
+
+            <button
+                class="toolbar-button primary"
+                onclick="savePortfolio()"
+            >
+                Save Portfolio
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="portfolioOutput"
+        class="portfolio-output"
+    ></div>
+
+
+</main>
+
+
+<script>
+
+    /* =========================================
+       GET DATA
+    ========================================= */
+
+    const portfolio =
+        JSON.parse(
+            localStorage.getItem("currentPortfolio")
+        );
+
+
+    const output =
+        document.getElementById("portfolioOutput");
+
+
+    /* =========================================
+       CHECK DATA
+    ========================================= */
+
+    if (!portfolio) {
+
+        output.innerHTML = `
+
+            <div class="empty-preview">
+
+                <h2>
+                    No portfolio found.
+                </h2>
+
+                <p>
+                    Please enter your portfolio information first.
+                </p>
+
+                <a
+                    href="create.html"
+                    class="btn btn-primary"
+                >
+                    Create Portfolio →
+                </a>
+
+            </div>
+
+        `;
+
+    } else {
+
+        renderPortfolio();
+
+    }
+
+
+    /* =========================================
+       RENDER PORTFOLIO
+    ========================================= */
+
+    function renderPortfolio() {
+
+        const template =
+            portfolio.selectedTemplate || "simple";
+
+
+        if (template === "simple") {
+
+            renderSimple();
+
+        } else if (template === "modern") {
+
+            renderModern();
+
+        } else if (template === "creative") {
+
+            renderCreative();
+
+        }
+
+    }
+
+
+    /* =========================================
+       PROFILE IMAGE
+    ========================================= */
+
+    function getInitials(name) {
+
+        if (!name) return "P";
+
+        return name
+            .split(" ")
+            .map(word => word.charAt(0))
+            .slice(0, 2)
+            .join("")
+            .toUpperCase();
+
+    }
+
+
+    /* =========================================
+       SIMPLE TEMPLATE
+    ========================================= */
+
+    function renderSimple() {
+
+        output.innerHTML = `
+
+            <section class="portfolio-simple">
+
+                <div class="simple-header">
+
+                    <div class="simple-profile">
+
+                        ${getInitials(portfolio.fullName)}
+
+                    </div>
+
+                    <h1 class="portfolio-name">
+                        ${escapeHTML(portfolio.fullName)}
+                    </h1>
+
+                    <div class="simple-contact">
+
+                        ${escapeHTML(portfolio.email || "")}
+
+                        ${portfolio.contactNumber
+                            ? " • " + escapeHTML(portfolio.contactNumber)
+                            : ""
+                        }
+
+                        ${portfolio.address
+                            ? " • " + escapeHTML(portfolio.address)
+                            : ""
+                        }
+
+                    </div>
+
+                </div>
+
+
+                <div class="simple-about">
+
+                    <h2>
+                        About Me
+                    </h2>
+
+                    <p>
+                        ${escapeHTML(
+                            portfolio.aboutMe || "No description provided."
+                        )}
+                    </p>
+
+                </div>
+
+
+                <div class="simple-grid">
+
+                    <div>
+
+                        <div class="simple-section">
+
+                            <h2>
+                                Education
+                            </h2>
+
+                            ${renderSimpleEducation()}
+
+                        </div>
+
+
+                        <div class="simple-section">
+
+                            <h2>
+                                Experience
+                            </h2>
+
+                            ${renderSimpleExperience()}
+
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <div class="simple-section">
+
+                            <h2>
+                                Skills
+                            </h2>
+
+                            <p>
+                                ${escapeHTML(
+                                    portfolio.skills || "No skills added."
+                                )}
+                            </p>
+
+                        </div>
+
+
+                        <div class="simple-section">
+
+                            <h2>
+                                Projects
+                            </h2>
+
+                            ${renderSimpleProjects()}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                ${renderSimpleSocials()}
+
+            </section>
+
+        `;
+
+    }
+
+
+    function renderSimpleEducation() {
+
+        if (!portfolio.education ||
+            portfolio.education.length === 0) {
+
+            return "<p>No education added.</p>";
+
+        }
+
+
+        return portfolio.education
+            .map(item => `
+
+                <div class="simple-item">
+
+                    <strong>
+                        ${escapeHTML(item.degree || item.school || "")}
+                    </strong>
+
+                    <span>
+                        ${escapeHTML(item.school || "")}
+                        ${item.year
+                            ? " • " + escapeHTML(item.year)
+                            : ""
+                        }
+                    </span>
+
+                    ${
+                        item.description
+                        ? `<p>${escapeHTML(item.description)}</p>`
+                        : ""
+                    }
+
+                </div>
+
+            `)
+            .join("");
+
+    }
+
+
+    function renderSimpleExperience() {
+
+        if (!portfolio.experience ||
+            portfolio.experience.length === 0) {
+
+            return "<p>No experience added.</p>";
+
+        }
+
+
+        return portfolio.experience
+            .map(item => `
+
+                <div class="simple-item">
+
+                    <strong>
+                        ${escapeHTML(item.position || "")}
+                    </strong>
+
+                    <span>
+                        ${escapeHTML(item.company || "")}
+                        ${item.duration
+                            ? " • " + escapeHTML(item.duration)
+                            : ""
+                        }
+                    </span>
+
+                    ${
+                        item.description
+                        ? `<p>${escapeHTML(item.description)}</p>`
+                        : ""
+                    }
+
+                </div>
+
+            `)
+            .join("");
+
+    }
+
+
+    function renderSimpleProjects() {
+
+        if (!portfolio.projects ||
+            portfolio.projects.length === 0) {
+
+            return "<p>No projects added.</p>";
+
+        }
+
+
+        return portfolio.projects
+            .map(item => `
+
+                <div class="simple-item">
+
+                    <strong>
+                        ${escapeHTML(item.name || "")}
+                    </strong>
+
+                    ${
+                        item.link
+                        ? `
+                            <a
+                                href="${safeURL(item.link)}"
+                                target="_blank"
+                                style="
+                                    color:#e87945;
+                                    font-size:11px;
+                                "
+                            >
+                                View Project
+                            </a>
+                        `
+                        : ""
+                    }
+
+                    ${
+                        item.description
+                        ? `<p>${escapeHTML(item.description)}</p>`
+                        : ""
+                    }
+
+                </div>
+
+            `)
+            .join("");
+
+    }
+
+
+    function renderSimpleSocials() {
+
+        const links = [];
+
+        if (portfolio.github)
+            links.push(
+                `<a href="${safeURL(portfolio.github)}" target="_blank">GitHub</a>`
+            );
+
+        if (portfolio.linkedin)
+            links.push(
+                `<a href="${safeURL(portfolio.linkedin)}" target="_blank">LinkedIn</a>`
+            );
+
+        if (portfolio.facebook)
+            links.push(
+                `<a href="${safeURL(portfolio.facebook)}" target="_blank">Facebook</a>`
+            );
+
+        if (portfolio.website)
+            links.push(
+                `<a href="${safeURL(portfolio.website)}" target="_blank">Website</a>`
+            );
+
+
+        if (links.length === 0)
+            return "";
+
+
+        return `
+
+            <div class="simple-socials">
+                ${links.join("")}
+            </div>
+
+        `;
+
+    }
+
+
+    /* =========================================
+       MODERN TEMPLATE
+    ========================================= */
+
+    function renderModern() {
+
+        output.innerHTML = `
+
+            <section class="portfolio-modern">
+
+
+                <aside class="modern-sidebar">
+
+                    <div class="modern-profile">
+
+                        ${getInitials(portfolio.fullName)}
+
+                    </div>
+
+
+                    <h1>
+                        ${escapeHTML(portfolio.fullName)}
+                    </h1>
+
+
+                    <div class="modern-role">
+                        Portfolio
+                    </div>
+
+
+                    <div class="modern-side-section">
+
+                        <h3>
+                            Contact
+                        </h3>
+
+                        <p>
+                            ${escapeHTML(portfolio.email || "")}
+                        </p>
+
+                        <p>
+                            ${escapeHTML(
+                                portfolio.contactNumber || ""
+                            )}
+                        </p>
+
+                        <p>
+                            ${escapeHTML(
+                                portfolio.address || ""
+                            )}
+                        </p>
+
+                    </div>
+
+
+                    <div class="modern-side-section">
+
+                        <h3>
+                            Social
+                        </h3>
+
+                        ${portfolio.github
+                            ? `<a href="${safeURL(portfolio.github)}" target="_blank">GitHub</a>`
+                            : ""
+                        }
+
+                        ${portfolio.linkedin
+                            ? `<a href="${safeURL(portfolio.linkedin)}" target="_blank">LinkedIn</a>`
+                            : ""
+                        }
+
+                        ${portfolio.website
+                            ? `<a href="${safeURL(portfolio.website)}" target="_blank">Website</a>`
+                            : ""
+                        }
+
+                    </div>
+
+                </aside>
+
+
+                <div class="modern-main">
+
+                    <div class="modern-intro-label">
+                        HELLO, I'M
+                    </div>
+
+                    <h2>
+                        ${escapeHTML(portfolio.fullName)}
+                    </h2>
+
+                    <p class="modern-about">
+                        ${escapeHTML(
+                            portfolio.aboutMe || ""
+                        )}
+                    </p>
+
+
+                    <section class="modern-section">
+
+                        <div class="modern-section-title">
+                            <span>
+                                Skills
+                            </span>
+                        </div>
+
+                        <div class="modern-skills">
+
+                            ${renderModernSkills()}
+
+                        </div>
+
+                    </section>
+
+
+                    <section class="modern-section">
+
+                        <div class="modern-section-title">
+                            <span>
+                                Projects
+                            </span>
+                        </div>
+
+                        <div class="modern-card-grid">
+
+                            ${renderModernProjects()}
+
+                        </div>
+
+                    </section>
+
+
+                    <section class="modern-section">
+
+                        <div class="modern-section-title">
+                            <span>
+                                Education
+                            </span>
+                        </div>
+
+                        <div class="modern-card-grid">
+
+                            ${renderModernEducation()}
+
+                        </div>
+
+                    </section>
+
+
+                    <section class="modern-section">
+
+                        <div class="modern-section-title">
+                            <span>
+                                Experience
+                            </span>
+                        </div>
+
+                        <div class="modern-card-grid">
+
+                            ${renderModernExperience()}
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+            </section>
+
+        `;
+
+    }
+
+
+    function renderModernSkills() {
+
+        if (!portfolio.skills)
+            return `<span class="modern-skill">No skills added</span>`;
+
+
+        return portfolio.skills
+            .split(",")
+            .map(skill => `
+
+                <span class="modern-skill">
+                    ${escapeHTML(skill.trim())}
+                </span>
+
+            `)
+            .join("");
+
+    }
+
+
+    function renderModernProjects() {
+
+        if (!portfolio.projects ||
+            portfolio.projects.length === 0) {
+
+            return `
+                <div class="modern-card">
+                    <p>No projects added.</p>
+                </div>
+            `;
+
+        }
+
+
+        return portfolio.projects
+            .map(item => `
+
+                <article class="modern-card">
+
+                    <h4>
+                        ${escapeHTML(item.name || "Project")}
+                    </h4>
+
+                    ${
+                        item.link
+                        ? `
+                            <small>
+                                <a
+                                    href="${safeURL(item.link)}"
+                                    target="_blank"
+                                    style="color:#d17851"
+                                >
+                                    View Project →
+                                </a>
+                            </small>
+                        `
+                        : ""
+                    }
+
+                    <p>
+                        ${escapeHTML(
+                            item.description || ""
+                        )}
+                    </p>
+
+                </article>
+
+            `)
+            .join("");
+
+    }
+
+
+    function renderModernEducation() {
+
+        if (!portfolio.education ||
+            portfolio.education.length === 0) {
+
+            return `
+                <div class="modern-card">
+                    <p>No education added.</p>
+                </div>
+            `;
+
+        }
+
+
+        return portfolio.education
+            .map(item => `
+
+                <article class="modern-card">
+
+                    <h4>
+                        ${escapeHTML(
+                            item.degree ||
+                            item.school ||
+                            ""
+                        )}
+                    </h4>
+
+                    <small>
+                        ${escapeHTML(item.school || "")}
+                    </small>
+
+                    <p>
+                        ${escapeHTML(item.year || "")}
+                    </p>
+
+                </article>
+
+            `)
+            .join("");
+
+    }
+
+
+    function renderModernExperience() {
+
+        if (!portfolio.experience ||
+            portfolio.experience.length === 0) {
+
+            return `
+                <div class="modern-card">
+                    <p>No experience added.</p>
+                </div>
+            `;
+
+        }
+
+
+        return portfolio.experience
+            .map(item => `
+
+                <article class="modern-card">
+
+                    <h4>
+                        ${escapeHTML(
+                            item.position || ""
+                        )}
+                    </h4>
+
+                    <small>
+                        ${escapeHTML(
+                            item.company || ""
+                        )}
+                    </small>
+
+                    <p>
+                        ${escapeHTML(
+                            item.duration || ""
+                        )}
+                    </p>
+
+                    <p>
+                        ${escapeHTML(
+                            item.description || ""
+                        )}
+                    </p>
+
+                </article>
+
+            `)
+            .join("");
+
+    }
+
+
+    /* =========================================
+       CREATIVE TEMPLATE
+    ========================================= */
+
+    function renderCreative() {
+
+        output.innerHTML = `
+
+            <section class="portfolio-creative">
+
+
+                <div class="creative-decoration-one"></div>
+
+                <div class="creative-decoration-two"></div>
+
+
+                <div class="creative-inner">
+
+
+                    <div class="creative-hero">
+
+
+                        <div>
+
+                            <div class="creative-label">
+                                PORTFOLIO
+                            </div>
+
+                            <h1>
+                                ${escapeHTML(
+                                    portfolio.fullName
+                                )}
+                            </h1>
+
+                            <div class="creative-role">
+                                Creative Professional
+                            </div>
+
+                            <p class="creative-about">
+                                ${escapeHTML(
+                                    portfolio.aboutMe || ""
+                                )}
+                            </p>
+
+                        </div>
+
+
+                        <div class="creative-profile">
+
+                            ${getInitials(
+                                portfolio.fullName
+                            )}
+
+                        </div>
+
+
+                    </div>
+
+
+                    <section class="creative-section">
+
+                        <h2>
+                            My Skills
+                        </h2>
+
+                        <div class="creative-socials">
+
+                            ${renderCreativeSkills()}
+
+                        </div>
+
+                    </section>
+
+
+                    <section class="creative-section">
+
+                        <h2>
+                            Selected Projects
+                        </h2>
+
+                        <div class="creative-project-grid">
+
+                            ${renderCreativeProjects()}
+
+                        </div>
+
+                    </section>
+
+
+                    <section class="creative-section">
+
+                        <h2>
+                            Education
+                        </h2>
+
+                        ${renderCreativeEducation()}
+
+                    </section>
+
+
+                    <section class="creative-section">
+
+                        <h2>
+                            Experience
+                        </h2>
+
+                        ${renderCreativeExperience()}
+
+                    </section>
+
+
+                    <section class="creative-section">
+
+                        <h2>
+                            Find Me Online
+                        </h2>
+
+                        <div class="creative-socials">
+
+                            ${renderCreativeSocials()}
+
+                        </div>
+
+                    </section>
+
+
+                </div>
+
+            </section>
+
+        `;
+
+    }
+
+
+    function renderCreativeSkills() {
+
+        if (!portfolio.skills)
+            return "<span>No skills added.</span>";
+
+
+        return portfolio.skills
+            .split(",")
+            .map(skill => `
+
+                <span class="creative-socials">
+                    ${escapeHTML(skill.trim())}
+                </span>
+
+            `)
+            .join("");
+
+    }
+
+
+    function renderCreativeProjects() {
+
+        if (!portfolio.projects ||
+            portfolio.projects.length === 0) {
+
+            return `
+                <div class="creative-project">
+                    <p>No projects added.</p>
+                </div>
+            `;
+
+        }
+
+
+        return portfolio.projects
+            .map(item => `
+
+                <article class="creative-project">
+
+                    <h3>
+                        ${escapeHTML(
+                            item.name || "Project"
+                        )}
+                    </h3>
+
+                    <p>
+                        ${escapeHTML(
+                            item.description || ""
+                        )}
+                    </p>
+
+                    ${
+                        item.link
+                        ? `
+                            <p style="margin-top:10px;">
+                                <a
+                                    href="${safeURL(item.link)}"
+                                    target="_blank"
+                                    style="
+                                        color:#7567a8;
+                                        font-weight:700;
+                                    "
+                                >
+                                    View Project →
+                                </a>
+                            </p>
+                        `
+                        : ""
+                    }
+
+                </article>
+
+            `)
+            .join("");
+
+    }
+
+
+    function renderCreativeEducation() {
+
+        if (!portfolio.education ||
+            portfolio.education.length === 0) {
+
+            return "<p>No education added.</p>";
+
+        }
+
+
+        return portfolio.education
+            .map(item => `
+
+                <div class="creative-education-item">
+
+                    <strong>
+                        ${escapeHTML(
+                            item.degree ||
+                            item.school ||
+                            ""
+                        )}
+                    </strong>
+
+                    <span>
+                        ${escapeHTML(
+                            item.school || ""
+                        )}
+
+                        ${
+                            item.year
+                            ? " • " +
+                              escapeHTML(item.year)
+                            : ""
+                        }
+                    </span>
+
+                    ${
+                        item.description
+                        ? `
+                            <p style="
+                                font-size:11px;
+                                color:#746a7a;
+                                margin-top:5px;
+                            ">
+                                ${escapeHTML(
+                                    item.description
+                                )}
+                            </p>
+                        `
+                        : ""
+                    }
+
+                </div>
+
+            `)
+            .join("");
+
+    }
+
+
+    function renderCreativeExperience() {
+
+        if (!portfolio.experience ||
+            portfolio.experience.length === 0) {
+
+            return "<p>No experience added.</p>";
+
+        }
+
+
+        return portfolio.experience
+            .map(item => `
+
+                <div class="creative-education-item">
+
+                    <strong>
+                        ${escapeHTML(
+                            item.position || ""
+                        )}
+                    </strong>
+
+                    <span>
+                        ${escapeHTML(
+                            item.company || ""
+                        )}
+
+                        ${
+                            item.duration
+                            ? " • " +
+                              escapeHTML(item.duration)
+                            : ""
+                        }
+                    </span>
+
+                    ${
+                        item.description
+                        ? `
+                            <p style="
+                                font-size:11px;
+                                color:#746a7a;
+                                margin-top:5px;
+                            ">
+                                ${escapeHTML(
+                                    item.description
+                                )}
+                            </p>
+                        `
+                        : ""
+                    }
+
+                </div>
+
+            `)
+            .join("");
+
+    }
+
+
+    function renderCreativeSocials() {
+
+        const links = [];
+
+        if (portfolio.github) {
+
+            links.push(`
+                <a
+                    href="${safeURL(portfolio.github)}"
+                    target="_blank"
+                >
+                    GitHub
+                </a>
+            `);
+
+        }
+
+        if (portfolio.linkedin) {
+
+            links.push(`
+                <a
+                    href="${safeURL(portfolio.linkedin)}"
+                    target="_blank"
+                >
+                    LinkedIn
+                </a>
+            `);
+
+        }
+
+        if (portfolio.facebook) {
+
+            links.push(`
+                <a
+                    href="${safeURL(portfolio.facebook)}"
+                    target="_blank"
+                >
+                    Facebook
+                </a>
+            `);
+
+        }
+
+        if (portfolio.website) {
+
+            links.push(`
+                <a
+                    href="${safeURL(portfolio.website)}"
+                    target="_blank"
+                >
+                    Website
+                </a>
+            `);
+
+        }
+
+
+        if (links.length === 0)
+            return "<span>No social links added.</span>";
+
+
+        return links.join("");
+
+    }
+
+
+    /* =========================================
+       EDIT
+    ========================================= */
+
+   function editPortfolio() {
+
+    if (portfolio && portfolio.id) {
+        localStorage.setItem("editPortfolioId", portfolio.id);
+    }
+
+    window.location.href = "create.html";
+}
+
+
+    /* =========================================
+       SAVE
+    ========================================= */
+
+    function savePortfolio() {
+
+        const existing =
+            JSON.parse(
+                localStorage.getItem("savedPortfolios")
+            ) || [];
+
+
+        const portfolioToSave = {
+
+            ...portfolio,
+
+            id:
+                portfolio.id ||
+                Date.now().toString(),
+
+            savedAt:
+                new Date().toISOString()
+
+        };
+
+
+        const index =
+            existing.findIndex(
+                item => item.id === portfolioToSave.id
+            );
+
+
+        if (index >= 0) {
+
+            existing[index] =
+                portfolioToSave;
+
+        } else {
+
+            existing.push(
+                portfolioToSave
+            );
+
+        }
+
+
+        localStorage.setItem(
+            "savedPortfolios",
+            JSON.stringify(existing)
+        );
+
+
+        localStorage.setItem(
+            "currentPortfolio",
+            JSON.stringify(portfolioToSave)
+        );
+
+
+        alert(
+            "Portfolio saved successfully!"
+        );
+
+
+        window.location.href =
+            "manage.html";
+
+    }
+
+
+    /* =========================================
+       SECURITY HELPERS
+    ========================================= */
+
+    function escapeHTML(value) {
+
+        if (value === null ||
+            value === undefined) {
+
+            return "";
+
+        }
+
+        return String(value)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+
+    }
+
+
+    function safeURL(value) {
+
+        if (!value)
+            return "#";
+
+
+        try {
+
+            const url =
+                new URL(value);
+
+            if (
+                url.protocol === "http:" ||
+                url.protocol === "https:"
+            ) {
+
+                return url.href;
+
+            }
+
+        } catch (error) {
+
+            return "#";
+
+        }
+
+
+        return "#";
+
+    }
+
+</script>
+
+
+</body>
+
+</html>

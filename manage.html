@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Portfolios — Portfolio</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <style>
+
+        .manage-page {
+            padding: 60px 20px 100px;
+            background: #f5f3ee;
+            min-height: 80vh;
+        }
+
+        .manage-container {
+            max-width: 1050px;
+            margin: auto;
+        }
+
+        .manage-heading {
+            margin-bottom: 35px;
+        }
+
+        .manage-heading span {
+            color: #e87945;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .manage-heading h1 {
+            font-family: "Playfair Display", serif;
+            font-size: 46px;
+            margin: 8px 0;
+        }
+
+        .manage-heading p {
+            color: #777;
+            font-size: 13px;
+        }
+
+        .portfolio-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .portfolio-card {
+            background: white;
+            border: 1px solid #e3dfd7;
+            border-radius: 14px;
+            padding: 25px;
+
+            transition: .2s ease;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0,0,0,.06);
+        }
+
+        .portfolio-card-top {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .portfolio-avatar {
+            width: 58px;
+            height: 58px;
+
+            border-radius: 50%;
+
+            background: #f0e5dc;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 18px;
+            font-weight: 700;
+
+            color: #d2693e;
+        }
+
+        .portfolio-card h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 23px;
+            margin-bottom: 4px;
+        }
+
+        .portfolio-card-email {
+            color: #888;
+            font-size: 11px;
+        }
+
+        .template-badge {
+            display: inline-block;
+
+            margin-bottom: 20px;
+
+            padding: 6px 10px;
+
+            border-radius: 50px;
+
+            background: #f2f0eb;
+
+            color: #666;
+
+            font-size: 10px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+        .portfolio-card-actions {
+            display: flex;
+            gap: 8px;
+
+            border-top: 1px solid #eee;
+
+            padding-top: 18px;
+        }
+
+        .action-button {
+            flex: 1;
+
+            border: 1px solid #ddd8cf;
+
+            background: white;
+
+            padding: 10px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-size: 11px;
+
+            font-weight: 600;
+        }
+
+        .action-button:hover {
+            background: #f5f3ee;
+        }
+
+        .action-button.primary {
+            background: #171717;
+            color: white;
+            border-color: #171717;
+        }
+
+        .action-button.delete {
+            color: #c94d4d;
+        }
+
+        .empty-state {
+            background: white;
+
+            border: 1px dashed #d5d0c8;
+
+            border-radius: 15px;
+
+            text-align: center;
+
+            padding: 70px 30px;
+        }
+
+        .empty-icon {
+            width: 60px;
+            height: 60px;
+
+            background: #f0e8df;
+
+            border-radius: 50%;
+
+            margin: 0 auto 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 24px;
+        }
+
+        .empty-state h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 27px;
+            margin-bottom: 8px;
+        }
+
+        .empty-state p {
+            color: #888;
+            font-size: 12px;
+            margin-bottom: 25px;
+        }
+
+        .create-button {
+            display: inline-block;
+
+            background: #171717;
+            color: white;
+
+            padding: 12px 20px;
+
+            border-radius: 7px;
+
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 700px) {
+
+            .portfolio-list {
+                grid-template-columns: 1fr;
+            }
+
+            .manage-heading h1 {
+                font-size: 38px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="navbar">
+
+    <div class="nav-container">
+
+        <a
+            href="index.html"
+            class="logo"
+        >
+
+            <span class="logo-mark">
+                P
+            </span>
+
+            <span>
+                Portfolio
+            </span>
+
+        </a>
+
+
+        <nav class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="create.html">
+                Create
+            </a>
+
+            <a href="templates.html">
+                Templates
+            </a>
+
+            <a
+                href="manage.html"
+                class="active"
+            >
+                My Portfolios
+            </a>
+
+        </nav>
+
+
+        <a
+            href="create.html"
+            class="nav-button"
+        >
+            + New Portfolio
+        </a>
+
+    </div>
+
+</header>
+
+
+<main class="manage-page">
+
+    <div class="manage-container">
+
+
+        <div class="manage-heading">
+
+            <span>
+                Your Work
+            </span>
+
+            <h1>
+                My Portfolios
+            </h1>
+
+            <p>
+                View, edit, or delete your saved portfolio projects.
+            </p>
+
+        </div>
+
+
+        <div
+            id="portfolioList"
+            class="portfolio-list"
+        ></div>
+
+
+    </div>
+
+</main>
+
+
+<script>
+
+
+    /* =========================================
+       LOAD SAVED PORTFOLIOS
+    ========================================= */
+
+    const portfolioList =
+        document.getElementById(
+            "portfolioList"
+        );
+
+
+    let portfolios =
+        JSON.parse(
+            localStorage.getItem(
+                "savedPortfolios"
+            )
+        ) || [];
+
+
+    renderPortfolios();
+
+
+    /* =========================================
+       RENDER
+    ========================================= */
+
+    function renderPortfolios() {
+
+        if (portfolios.length === 0) {
+
+            portfolioList.innerHTML = `
+
+                <div class="empty-state">
+
+                    <div class="empty-icon">
+                        +
+                    </div>
+
+                    <h2>
+                        No portfolios yet
+                    </h2>
+
+                    <p>
+                        Create your first portfolio and
+                        start building your online presence.
+                    </p>
+
+                    <a
+                        href="create.html"
+                        class="create-button"
+                    >
+                        Create Portfolio →
+                    </a>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        portfolioList.innerHTML =
+            portfolios
+                .map(
+                    portfolio =>
+                        createPortfolioCard(
+                            portfolio
+                        )
+                )
+                .join("");
+
+    }
+
+
+    /* =========================================
+       PORTFOLIO CARD
+    ========================================= */
+
+    function createPortfolioCard(
+        portfolio
+    ) {
+
+        const template =
+            portfolio.selectedTemplate ||
+            "simple";
+
+
+        const templateName =
+            template.charAt(0).toUpperCase() +
+            template.slice(1);
+
+
+        return `
+
+            <div
+                class="portfolio-card"
+            >
+
+
+                <div class="portfolio-card-top">
+
+
+                    <div class="portfolio-avatar">
+
+                        ${getInitials(
+                            portfolio.fullName
+                        )}
+
+                    </div>
+
+
+                    <div>
+
+                        <h2>
+                            ${escapeHTML(
+                                portfolio.fullName ||
+                                "Untitled Portfolio"
+                            )}
+                        </h2>
+
+                        <div
+                            class="portfolio-card-email"
+                        >
+                            ${escapeHTML(
+                                portfolio.email || ""
+                            )}
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <span class="template-badge">
+
+                    ${templateName}
+                    Template
+
+                </span>
+
+
+                <div
+                    class="portfolio-card-actions"
+                >
+
+                    <button
+                        class="action-button primary"
+                        onclick="viewPortfolio('${portfolio.id}')"
+                    >
+                        View
+                    </button>
+
+
+                    <button
+                        class="action-button"
+                        onclick="editPortfolio('${portfolio.id}')"
+                    >
+                        Edit
+                    </button>
+
+
+                    <button
+                        class="action-button delete"
+                        onclick="deletePortfolio('${portfolio.id}')"
+                    >
+                        Delete
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* =========================================
+       VIEW
+    ========================================= */
+
+    function viewPortfolio(id) {
+
+        const portfolio =
+            portfolios.find(
+                item => item.id === id
+            );
+
+
+        if (!portfolio) {
+
+            alert(
+                "Portfolio not found."
+            );
+
+            return;
+
+        }
+
+
+        localStorage.setItem(
+            "currentPortfolio",
+            JSON.stringify(portfolio)
+        );
+
+
+        window.location.href =
+            "preview.html";
+
+    }
+
+
+    /* =========================================
+       EDIT
+    ========================================= */
+
+    function editPortfolio(id) {
+
+        const portfolio =
+            portfolios.find(
+                item => item.id === id
+            );
+
+
+        if (!portfolio) {
+
+            alert(
+                "Portfolio not found."
+            );
+
+            return;
+
+        }
+
+
+        localStorage.setItem(
+            "currentPortfolio",
+            JSON.stringify(portfolio)
+        );
+
+
+        window.location.href =
+            "create.html";
+
+    }
+
+
+    /* =========================================
+       DELETE
+    ========================================= */
+
+    function deletePortfolio(id) {
+
+        const portfolio =
+            portfolios.find(
+                item => item.id === id
+            );
+
+
+        if (!portfolio) {
+
+            return;
+
+        }
+
+
+        const confirmed =
+            confirm(
+                `Delete ${portfolio.fullName}'s portfolio?`
+            );
+
+
+        if (!confirmed) {
+
+            return;
+
+        }
+
+
+        portfolios =
+            portfolios.filter(
+                item => item.id !== id
+            );
+
+
+        localStorage.setItem(
+            "savedPortfolios",
+            JSON.stringify(portfolios)
+        );
+
+
+        renderPortfolios();
+
+    }
+
+
+    /* =========================================
+       GET INITIALS
+    ========================================= */
+
+    function getInitials(name) {
+
+        if (!name) {
+
+            return "P";
+
+        }
+
+
+        return name
+            .split(" ")
+            .map(
+                word =>
+                    word.charAt(0)
+            )
+            .slice(0, 2)
+            .join("")
+            .toUpperCase();
+
+    }
+
+
+    /* =========================================
+       SECURITY
+    ========================================= */
+
+    function escapeHTML(value) {
+
+        if (
+            value === null ||
+            value === undefined
+        ) {
+
+            return "";
+
+        }
+
+
+        return String(value)
+            .replace(
+                /&/g,
+                "&amp;"
+            )
+            .replace(
+                /</g,
+                "&lt;"
+            )
+            .replace(
+                />/g,
+                "&gt;"
+            )
+            .replace(
+                /"/g,
+                "&quot;"
+            )
+            .replace(
+                /'/g,
+                "&#039;"
+            );
+
+    }
+
+</script>
+
+
+</body>
+
+</html>
