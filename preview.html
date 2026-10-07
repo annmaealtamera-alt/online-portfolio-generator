@@ -976,18 +976,38 @@
        PROFILE IMAGE
     ========================================= */
 
-    function getInitials(name) {
+    
 
-        if (!name) return "P";
+        function getProfileImage(name) {
 
-        return name
-            .split(" ")
-            .map(word => word.charAt(0))
-            .slice(0, 2)
-            .join("")
-            .toUpperCase();
+    if (portfolio.profile_image_url) {
+
+        return `
+            <img
+                src="${portfolio.profile_image_url}"
+                alt="${escapeHTML(name || "Profile Picture")}"
+            >
+        `;
 
     }
+
+    return getInitials(name);
+
+}
+
+
+function getInitials(name) {
+
+    if (!name) return "P";
+
+    return name
+        .split(" ")
+        .map(word => word.charAt(0))
+        .slice(0, 2)
+        .join("")
+        .toUpperCase();
+
+}
 
 
     /* =========================================
@@ -1004,9 +1024,9 @@
 
                     <div class="simple-profile">
 
-                        ${getInitials(portfolio.fullName)}
+    ${getProfileImage(portfolio.fullName)}
 
-                    </div>
+</div>
 
                     <h1 class="portfolio-name">
                         ${escapeHTML(portfolio.fullName)}
@@ -1302,9 +1322,9 @@
 
                     <div class="modern-profile">
 
-                        ${getInitials(portfolio.fullName)}
+    ${getProfileImage(portfolio.fullName)}
 
-                    </div>
+</div>
 
 
                     <h1>
@@ -1677,11 +1697,11 @@
 
                         <div class="creative-profile">
 
-                            ${getInitials(
-                                portfolio.fullName
-                            )}
+    ${getProfileImage(
+        portfolio.fullName
+    )}
 
-                        </div>
+</div>
 
 
                     </div>

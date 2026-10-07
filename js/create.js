@@ -24,22 +24,40 @@ if (form) {
       description: item.querySelector(".experience-description").value.trim()
     }));
 
-    const portfolio = {
-      full_name: document.getElementById("fullName").value.trim(),
-      email: document.getElementById("email").value.trim(),
-      contact_number: document.getElementById("contactNumber").value.trim(),
-      address: document.getElementById("address").value.trim(),
-      about_me: document.getElementById("aboutMe").value.trim(),
-      skills: document.getElementById("skills").value.trim(),
-      github: document.getElementById("github").value.trim(),
-      linkedin: document.getElementById("linkedin").value.trim(),
-      facebook: document.getElementById("facebook").value.trim(),
-      website: document.getElementById("website").value.trim(),
-      education,
-      projects,
-      experience
-    };
+    const profilePictureInput = document.getElementById("profilePicture");
 
+let profileImageUrl = null;
+
+if (profilePictureInput && profilePictureInput.files.length > 0) {
+  const file = profilePictureInput.files[0];
+
+  profileImageUrl = await new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+
+    reader.readAsDataURL(file);
+  });
+}
+
+const portfolio = {
+  profile_image_url: profileImageUrl,
+
+  full_name: document.getElementById("fullName").value.trim(),
+  email: document.getElementById("email").value.trim(),
+  contact_number: document.getElementById("contactNumber").value.trim(),
+  address: document.getElementById("address").value.trim(),
+  about_me: document.getElementById("aboutMe").value.trim(),
+  skills: document.getElementById("skills").value.trim(),
+  github: document.getElementById("github").value.trim(),
+  linkedin: document.getElementById("linkedin").value.trim(),
+  facebook: document.getElementById("facebook").value.trim(),
+  website: document.getElementById("website").value.trim(),
+  education,
+  projects,
+  experience
+};
     const editId = localStorage.getItem("editPortfolioId");
 
     let data;
